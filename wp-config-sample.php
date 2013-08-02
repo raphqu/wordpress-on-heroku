@@ -14,18 +14,20 @@
  * @package WordPress
  */
 
-// ** MySQL settings - You can get this info from your web host ** //
+// ** ClearDB settings - https://devcenter.heroku.com/articles/cleardb#using-cleardb-with-php ** //
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+
 /** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', substr($url["path"],1));
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
+/** Database username */
+define('DB_USER', $url["user"]);
 
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+/** Database password */
+define('DB_PASSWORD', $url["pass"]);
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+/** Hostname */
+define('DB_HOST', $url["host"]);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
