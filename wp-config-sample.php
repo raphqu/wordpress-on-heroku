@@ -14,6 +14,10 @@
  * @package WordPress
  */
 
+/** Force SSL Logins and SSL Admin Access **/
+define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_LOGIN', true);
+
 // ** ClearDB settings - https://devcenter.heroku.com/articles/cleardb#using-cleardb-with-php ** //
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
