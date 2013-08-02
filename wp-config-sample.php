@@ -18,6 +18,10 @@
 define('FORCE_SSL_ADMIN', true);
 define('FORCE_SSL_LOGIN', true);
 
+/** Avoid an infinite redirect loop - http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy **/
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+  $_SERVER['HTTPS']='on';
+
 // ** ClearDB settings - https://devcenter.heroku.com/articles/cleardb#using-cleardb-with-php ** //
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
